@@ -1,0 +1,132 @@
+<notifier-container></notifier-container>
+
+<ngx-spinner class="myspiner" bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="line-scale-party">
+    <p style="font-size: 20px; color: white" fullScreen="true">Cargando...</p>
+  </ngx-spinner>
+<div class="view-info" *ngIf="Detallepropiedad">
+  <div class="card fondo-blanco94" >
+    
+    <div class="row">
+    
+
+    <div class="col-sm-12">
+      <div class="contenedor1">
+        <blockquote class="blockquote m-t-15 m-b-0 ">
+          <h1>Mis propiedades favoritas</h1>
+          <h5 class="texto-gris">Empieza a reservar ahora</h5>
+        </blockquote>
+      </div>
+      
+    </div>
+  
+    </div>
+
+    <div class="col-md-12 row p-t-30 p-b-30">
+      <div *ngFor="let item of propiedades; let i= index" class="col-md-3">
+        <app-card cardTitle="{{item.titulo}}" [options]="false" [hidHeader]="false" blockClass="m-t-15" [isCardFooter]="true" footerClass="bg-dark">
+          <ngb-carousel [showNavigationArrows]="false" [interval]="3000">
+            <ng-template ngbSlide>
+              <img class="d-block card-img-top" src="{{item.image_1}}" alt="First Slide">
+              <div class="card-img-overlay">
+                <h4><span class="card-title badge m-r-10 badge-pill badge-success mr-4"> {{(item.reservacion==1)?'Disponible': 'Alquilado'}}</span> 
+                  
+                <span class="feather icon-heart texto-rosado" *ngIf="item.favorito==0" (click)="agregarFavorito(item)"></span>
+                <span class="feather icon-heart-on texto-rosado" *ngIf="item.favorito==1" (click)="eliminarFavorito(item)"></span>
+               
+                </h4>
+                
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img class="d-block card-img-top" src="{{item.image_2}}" alt="Second Slide">
+              <div class="card-img-overlay">
+               <h4><span class="card-title badge m-r-10 badge-pill badge-success mr-4"> {{(item.reservacion==1)?'Disponible': 'Alquilado'}}</span> 
+                  
+                <span class="feather icon-heart texto-rosado" *ngIf="item.favorito==0" (click)="agregarFavorito(item)"></span>
+                <span class="feather icon-heart-on texto-rosado" *ngIf="item.favorito==1" (click)="eliminarFavorito(item)"></span>
+               
+                </h4>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img class="d-block card-img-top" src="{{item.image_3}}" alt="Third Slide">
+              <div class="card-img-overlay">
+               <h4><span class="card-title badge m-r-10 badge-pill badge-success mr-4"> {{(item.reservacion==1)?'Disponible': 'Alquilado'}}</span> 
+                  
+                <span class="feather icon-heart texto-rosado" *ngIf="item.favorito==0" (click)="agregarFavorito(item)"></span>
+                <span class="feather icon-heart-on texto-rosado" *ngIf="item.favorito==1" (click)="eliminarFavorito(item)"></span>
+               
+                </h4>
+              </div>
+            </ng-template>
+            
+          </ngb-carousel>
+          <div class="content">
+            
+            
+            <div class="col p-t-10 p-b-10">
+              <div class="d-inline-block align-middle" (click)="openFeedAnfitrion(item)">
+                <img src="{{item.imagenPerfil}}"  *ngIf="item.imagenPerfil!=null" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                <div class="d-inline-block">
+                  <h6>{{item.primerNombre}} {{item.primerApellido}}</h6>
+                  <p class="text-muted m-b-0">Ánfitrión de la propiedad</p>
+                </div>
+              </div>
+            </div>
+
+            
+            
+            <div class="col p-t-5 p-b-5">
+              <h5 class="text-dark mt-3 mr-3"><strong><span class="fas fa-map-marker-alt fa-lg"></span> {{item.direccion}}</strong></h5>
+            </div>
+  
+            <div class="col p-t-5 p-b-5">
+              <h4><span class="badge m-r-10 badge-pill badge-light-primary"><strong>L. {{item.precioPorNoche}}</strong></span></h4>
+              
+            </div>
+          
+            <div class="row justify-content-md-center p-t-5 p-b-5">
+              
+              <div class="col-lg-2">
+                <i class="fas fa-bath text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{item.cantidadBanios}} </h6>
+              </div>
+              <div class="col-lg-2">
+                <i class="fas fa-bed text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{item.numHabitaciones}} </h6>
+              </div>
+              <div class="col-md-auto">
+                <i class="fas fa-wifi text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{(item.internet==1)?'Si': 'No'}} </h6>
+              </div>
+              <div class="col-lg-2">
+                <i class="fas fa-car text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{item.estacionamiento}} </h6>
+              </div>
+              
+            </div>
+            
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col">
+                
+                <h6 (click)="openDetallePropiedad(item)"class="text-white">Ver detalles<span class="feather icon-chevron-right f-25"></span></h6>
+              </div>
+              <div class="col text-right">
+                <h5 class="text-white "><strong><span class="feather icon-calendar text-white f-16"></span> {{item.inicioFechaDisponible | date: 'dd-MMM'}} - {{item.finFechaDisponible | date: 'dd-MMM'}}</strong></h5>
+              </div>
+            </div>          
+          </div>
+  
+        </app-card>
+        
+      </div>
+    </div>    
+    
+   
+
+  </div>
+  
+
+</div>

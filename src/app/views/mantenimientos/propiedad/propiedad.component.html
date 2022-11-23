@@ -1,0 +1,367 @@
+<notifier-container></notifier-container>
+<ngx-spinner class="myspiner" bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="line-scale-party">
+  <p style="font-size: 20px; color: white" fullScreen="true">Cargando...</p>
+</ngx-spinner>
+<div class="row mr-3 ml-3" >
+    <div class="col-md-12 ">
+      <div class="card fondo-blanco94" >
+        <div class="card-header">
+          <h5 >PROPIEDADES</h5>
+          <p ></p>
+        
+        </div>
+        <div class="card-body" >
+            <div class="div-btn-derecha btn-gruop mb-3">
+              <button type="button" class="btn btn-outline-info " (click)="ngOnInit()"><strong><span class="fas fa-sync mr-1"></span>Refrescar</strong></button>
+               <button type="button" class="btn btn-outline-primary ml-2" (click)="modalPropiedad.show();openModal('', dataConst.tipoPost)" ><strong><span class="fas fa-plus mr-1"></span>Nuevo</strong></button>
+             </div>  
+
+             <!--MODAL-->
+             <app-ui-modal #modalPropiedad [dialogClass]="'modal-lg'">
+               <div class="app-modal-header">
+                 <h5 class="modal-title">{{(tipo==dataConst.tipoPost)?'Nueva': 'Editar'}} Propiedad</h5>
+                 <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalPropiedad.hide(); hideModal()"><span aria-hidden="true">&times;</span></button>
+               </div>
+               <div class="app-modal-body">
+                <form [formGroup]="TipoPropiedadForm" autocomplete="nope" novalidate *ngIf="paso==1">
+                  <div class="form-row">
+                    <div class="mb-3 col-lg-6">
+      
+                      <ng-select dropdownPosition="bottom" class="letras" [items]="tipoPropiedades"
+                            bindLabel="nombre" bindValue="nombre" formControlName="tipoPropiedad" id="tipoPropiedad"
+                            name="tipoPropiedad" 
+                            placeholder="Seleccione Tipo de Propiedad" >
+                      </ng-select>
+                          <div
+                          *ngIf="TipoPropiedadForm.get('tipoPropiedad').errors && TipoPropiedadForm.get('tipoPropiedad').dirty">
+                                <p *ngIf="TipoPropiedadForm.get('tipoPropiedad').hasError('required')"
+                                  class="texto-naranja fadeIn">
+                                  ¡Tipo de Propiedad es requerido!
+                                </p>
+                      </div>
+                      
+                    </div>
+
+                    <div class="mb-3 col-lg-6">
+      
+                      <ng-select dropdownPosition="bottom" class="letras" [items]="tipoEspacios"
+                            bindLabel="nombre" bindValue="nombre" formControlName="tipoEspacio" id="tipoEspacio"
+                            name="tipoEspacio" 
+                            placeholder="Seleccione Tipo de Espacio" >
+                      </ng-select>
+                          <div
+                          *ngIf="TipoPropiedadForm.get('tipoEspacio').errors && TipoPropiedadForm.get('tipoEspacio').dirty">
+                                <p *ngIf="TipoPropiedadForm.get('tipoEspacio').hasError('required')"
+                                  class="texto-naranja fadeIn">
+                                  ¡Tipo de Espacio es requerido!
+                                </p>
+                      </div>
+                      
+                    </div>
+
+                    <div class="col-md-6">
+                          <div class="input-group row">
+                            <label class="col-md-7 col-lg-8 texto-gris mt-3">Cantidad de Huespedes: </label>
+                            <input type="number" class="form-control col-md-5 col-lg-3 mt-1" placeholder="" name="cantidadHuespedes" id="cantidadHuespedes" formControlName="cantidadHuespedes" >
+                            
+
+                          </div>
+                          <div
+                                    *ngIf="TipoPropiedadForm.get('cantidadHuespedes').errors && TipoPropiedadForm.get('cantidadHuespedes').dirty">
+                                    <p *ngIf="TipoPropiedadForm.get('cantidadHuespedes').hasError('required')"
+                                      class="texto-naranja fadeIn">
+                                      ¡Cantidad de Huespedes es requerida!
+                                    </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                          <div class="input-group row">
+                            <label class="col-md-7 col-lg-8 texto-gris mt-3">Número de habitaciones: </label>
+                            <input type="number" class="form-control col-md-5 col-lg-3 mt-1" placeholder="" name="numHabitaciones" id="numHabitaciones" formControlName="numHabitaciones" >
+                            
+
+                          </div>
+                          <div
+                                    *ngIf="TipoPropiedadForm.get('numHabitaciones').errors && TipoPropiedadForm.get('numHabitaciones').dirty">
+                                    <p *ngIf="TipoPropiedadForm.get('numHabitaciones').hasError('required')"
+                                      class="texto-naranja fadeIn">
+                                      ¡Número de habitaciones es requerida!
+                                    </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                          <div class="input-group row">
+                            <label class="col-md-7 col-lg-8 texto-gris mt-3">Estacionamientos: </label>
+                            <input type="number" class="form-control col-md-5 col-lg-3 mt-1" placeholder="" name="estacionamiento" id="estacionamiento" formControlName="estacionamiento" >
+                            
+
+                          </div>
+                          <div
+                                    *ngIf="TipoPropiedadForm.get('estacionamiento').errors && TipoPropiedadForm.get('estacionamiento').dirty">
+                                    <p *ngIf="TipoPropiedadForm.get('estacionamiento').hasError('required')"
+                                      class="texto-naranja fadeIn">
+                                      ¡Estacionamientos es requerida!
+                                    </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                          <div class="input-group row">
+                            <label class="col-md-7 col-lg-8 texto-gris mt-3">Cantidad de baños: </label>
+                            <input type="number" class="form-control col-md-5 col-lg-3 mt-1" placeholder="" name="cantidadBanios" id="cantidadBanios" formControlName="cantidadBanios" >
+                            
+
+                          </div>
+                          <div
+                                    *ngIf="TipoPropiedadForm.get('cantidadBanios').errors && TipoPropiedadForm.get('cantidadBanios').dirty">
+                                    <p *ngIf="TipoPropiedadForm.get('cantidadBanios').hasError('required')"
+                                      class="texto-naranja fadeIn">
+                                      ¡Cantidad de baños es requerida!
+                                    </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 col-lg-6">
+                        <label class="mt-3">¿Tiene aire acondicionado? </label>
+                        <ng-select dropdownPosition="bottom" class="letras" [items]="dataConst.SINOnum"
+                              bindLabel="descripcion" bindValue="valor" formControlName="aireAcondicionado" id="aireAcondicionado"
+                              name="aireAcondicionado" 
+                              placeholder="Seleccione" >
+                        </ng-select>
+                            <div
+                            *ngIf="TipoPropiedadForm.get('aireAcondicionado').errors && TipoPropiedadForm.get('aireAcondicionado').dirty">
+                                  <p *ngIf="TipoPropiedadForm.get('aireAcondicionado').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Campo es requerido!
+                                  </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 col-lg-6">
+                        <label class="mt-3">¿Internet? </label>
+                        <ng-select dropdownPosition="bottom" class="letras" [items]="dataConst.SINOnum"
+                              bindLabel="descripcion" bindValue="valor" formControlName="internet" id="internet"
+                              name="internet" 
+                              placeholder="Seleccione" >
+                        </ng-select>
+                            <div
+                            *ngIf="TipoPropiedadForm.get('internet').errors && TipoPropiedadForm.get('internet').dirty">
+                                  <p *ngIf="TipoPropiedadForm.get('internet').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Campo es requerido!
+                                  </p>
+                        </div>
+                    </div>
+
+                   </div>
+        
+                  
+                </form>
+                 <form [formGroup]="RegistroForm" autocomplete="nope" novalidate *ngIf="paso==2">
+                    <div class="form-row">
+
+                      <div class="col-md-7">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Título" name="titulo" id="titulo" formControlName="titulo" >
+                          </div>
+                          <div
+                                    *ngIf="RegistroForm.get('titulo').errors && RegistroForm.get('titulo').dirty">
+                                    <p *ngIf="RegistroForm.get('titulo').hasError('required')"
+                                      class="texto-naranja fadeIn">
+                                      ¡El Título es requerido!
+                                    </p>
+                        </div>
+                      </div>
+                      
+
+
+                     <div class="col-md-12">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Descripción" name="descripcion" id="descripcion" formControlName="descripcion" >
+                          </div>
+                          <div
+                                    *ngIf="RegistroForm.get('descripcion').errors && RegistroForm.get('descripcion').dirty">
+                                    <p *ngIf="RegistroForm.get('descripcion').hasError('required')"
+                                      class="texto-naranja fadeIn">
+                                      ¡Descripción es requerida!
+                                    </p>
+                        </div>
+                     </div>
+                      
+                   
+
+
+                    <div class="col-md-12">
+                      <div class="input-group mb-3">
+                        <textarea  type="text" class="form-control" placeholder="Dirección" name="direccion" id="direccion" formControlName="direccion" rows="4" cols="50"></textarea>
+                    
+                      </div>
+                      <div
+                                  *ngIf="RegistroForm.get('direccion').errors && RegistroForm.get('direccion').dirty">
+                                  <p *ngIf="RegistroForm.get('direccion').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Dirección es requerida!
+                                  </p>
+                       </div>
+                    </div>
+                    
+                    
+                     <div class="col-md-12">
+                        <div class="input-group">
+                          <input type="text" class="form-control numeros" placeholder="Precio Por Noche" name="precioPorNoche" id="precioPorNoche" formControlName="precioPorNoche" >
+                        </div>
+                        <div
+                                  *ngIf="RegistroForm.get('precioPorNoche').errors && RegistroForm.get('precioPorNoche').dirty">
+                                  <p *ngIf="RegistroForm.get('precioPorNoche').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Precio Por Noche es requerido!
+                                  </p>
+                      </div>
+                     </div>
+                     
+
+                    <div class="col-md-6">
+                      <div class="input-group mb-4 mt-4 ">
+                        <label class="col-md-12 texto-gris">Inicio Fecha Disponible</label>
+                        <input type="date" class="form-control" name="inicioFechaDisponible" id="inicioFechaDisponible" formControlName="inicioFechaDisponible" >
+                      </div>
+                      <div
+                                  *ngIf="RegistroForm.get('inicioFechaDisponible').errors && RegistroForm.get('inicioFechaDisponible').dirty">
+                                  <p *ngIf="RegistroForm.get('inicioFechaDisponible').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Inicio Fecha Disponible es requerida!
+                                  </p>
+                       </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                      <div class="input-group mb-4 mt-4">
+                        <label class="col-md-12 texto-gris">Fin Fecha Disponible</label>
+                        <input type="date" class="form-control" name="finFechaDisponible" id="finFechaDisponible" formControlName="finFechaDisponible" >
+                      </div>
+                      <div
+                                  *ngIf="RegistroForm.get('finFechaDisponible').errors && RegistroForm.get('finFechaDisponible').dirty">
+                                  <p *ngIf="RegistroForm.get('finFechaDisponible').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Fin Fecha Disponible es requerida!
+                                  </p>
+                       </div>
+
+                    </div>
+                     
+                    <div class="mb-3 col-lg-12">
+                        <div class="upload-btn-wrapper">
+                          <label class="col-md-12 texto-gris">Adjuntar 3 imágenes</label>
+                          <input type="file" class="form-control" name="image_1" formControlName="image_1" id="image_1" formControlName="image_1" accept="image/*" (change)="handleFileSelectImagen1($event)"/>
+                        </div>
+                        <img src="{{imagen1}}" alt="Imagen1"  height="150" class="rounded mx-auto d-block mt-1">
+                    </div>
+                    <div class="mb-3 col-lg-6">
+                      <div class="upload-btn-wrapper">
+                      
+                        <input type="file" class="form-control" name="image_2" formControlName="image_2" id="image_2" formControlName="image_2" accept="image/*" (change)="handleFileSelectImagen2($event)"/>
+                      </div>
+                      <img src="{{imagen2}}" alt="Imagen2"  height="150" class="rounded mx-auto d-block mt-1">
+                    </div>
+
+                    <div class="mb-3 col-lg-6">
+                      <div class="upload-btn-wrapper">
+                      
+                        <input type="file" class="form-control" name="image_3" formControlName="image_3" id="image_3" formControlName="image_3" accept="image/*" (change)="handleFileSelectImagen3($event)"/>
+                      </div>
+                      <img src="{{imagen3}}" alt="Imagen3"  height="150" class="rounded mx-auto d-block mt-1">
+                    </div>
+          
+                    <div class="mb-3 col-lg-6">
+        
+                        <ng-select dropdownPosition="bottom" class="letras" [items]="dataConst.estados"
+                              bindLabel="descripcion" bindValue="estado" formControlName="estado" id="estado"
+                              name="estado" 
+                              placeholder="Seleccione Estado" >
+                        </ng-select>
+                            <div
+                            *ngIf="RegistroForm.get('estado').errors && RegistroForm.get('estado').dirty">
+                                  <p *ngIf="RegistroForm.get('estado').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡Estado es requerido!
+                                  </p>
+                        </div>
+                        
+                    </div>
+                    <div class="mb-3 col-lg-6">
+        
+                      <ng-select dropdownPosition="bottom" class="letras" [items]="dataConst.reservaciones"
+                            bindLabel="descripcion" bindValue="id" formControlName="reservacion" id="reservacion"
+                            name="reservacion" 
+                            placeholder="Seleccione Reservación" >
+                      </ng-select>
+                          <div
+                          *ngIf="RegistroForm.get('reservacion').errors && RegistroForm.get('reservacion').dirty">
+                                <p *ngIf="RegistroForm.get('reservacion').hasError('required')"
+                                  class="texto-naranja fadeIn">
+                                  ¡Reservación es requerido!
+                                </p>
+                      </div>
+                      
+                  </div>
+                    
+          
+                  </div>
+                  </form>
+
+                  
+                
+               </div>
+               <div class="app-modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalPropiedad.hide(); hideModal()">Cerrar</button>
+                 <button type="button" class="btn btn-primary ml-1" *ngIf="paso==1"  (click)="pasoAdelante(TipoPropiedadForm.valid)">Siguiente</button>
+                 <button type="button" class="btn btn-primary ml-1" *ngIf="paso==2"  (click)="pasoAtras()">Atrás</button>
+                 <button type="button" class="btn btn-primary ml-1" (click)="Save(TipoPropiedadForm.value,RegistroForm.value, RegistroForm.valid)">Guardar</button>
+               </div>
+             </app-ui-modal>
+
+
+             
+             <!--TABLA-->
+            <div class="table-responsive scroll-x-amarillo">
+              <table  class="table datatable table-sm table-hover datatable-table responsive nowrap rounded  fadeIn" aria-describedby="TipoPropiedad">
+                <thead>
+                <tr class="title-tabla">
+                  <th scope="col">Id</th>
+                  <th scope="col">Tipo de Propiedad</th>
+                  <th scope="col">Tipo de Espacio</th>
+                  <th scope="col">Título</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Reservación</th>
+                  <th scope="col">Inicio Fecha Disponible</th>
+                  <th scope="col">Fin Fecha Disponible</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody class="texto-tabla">
+                <tr *ngFor="let item of propiedades; let i= index"> 
+                  <td>{{i+1}}</td>
+                  <td>{{item.tipoPropiedad}}</td>
+                  <td>{{item.tipoEspacio}}</td>
+                  <td>{{item.titulo}}</td>
+                  <td>{{(item.estado==1)?'Activo': 'Inactivo'}}</td>
+                  <td>{{dataConst.getDescripcionReservacionPropiedadById(item.reservacion)}}</td>
+                  
+                  <td>{{item.inicioFechaDisponible | date: 'dd-MM-yyyy'}}</td>
+                  <td>{{item.finFechaDisponible | date: 'dd-MM-yyyy'}}</td>
+                  <td>
+                    <div class="btn-gruop">
+                      <span class="fas fa-pencil-alt texto-amarillo pr-2" (click)="modalPropiedad.show();openModal(item, dataConst.tipoPut)"></span>
+                     </div>
+                  </td>
+                </tr>
+              
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+
+</div>

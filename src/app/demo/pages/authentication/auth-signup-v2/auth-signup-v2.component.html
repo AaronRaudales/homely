@@ -1,0 +1,149 @@
+<div class="auth-wrapper align-items-stretch aut-bg-img">
+  <notifier-container></notifier-container>
+  <div class="flex-grow-1">
+    <div class="h-100 d-md-flex align-items-center auth-side-img">
+      <div class="col-sm-10 auth-content w-auto">
+        <img src="assets/images/auth/auth-logo.png" alt="" class="img-fluid">
+        <h1 class="text-white my-4">¡Bienvenido a Homely!</h1>
+        <h4 class="text-white font-weight-normal">Regístrate gratis para empezar a reservar casas y apartamentos en cualquier lugar.<br/>Conoce nuestras ofertas.</h4>
+      </div>
+    </div>
+    <div class="auth-side-form">
+      <div class=" auth-content">
+        <img src="assets/images/auth/auth-logo-dark.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none">
+        <h4 class="mb-3 f-w-400 text-center">Regístrate</h4>
+        <form [formGroup]="RegistroForm" autocomplete="nope" novalidate>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" placeholder="Primer Nombre" name="primerNombre" id="primerNombre" formControlName="primerNombre" [(ngModel)]='formularioSignup.primerNombre'>
+            </div>
+            <div
+                      *ngIf="RegistroForm.get('primerNombre').errors && RegistroForm.get('primerNombre').dirty">
+                      <p *ngIf="RegistroForm.get('primerNombre').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡El Nombre es requerido!
+                      </p>
+           </div>
+
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" placeholder="Primer Apellido" name="primerApellido" id="primerApellido" formControlName="primerApellido" [(ngModel)]='formularioSignup.primerApellido'>
+            </div>
+            <div
+                      *ngIf="RegistroForm.get('primerApellido').errors && RegistroForm.get('primerApellido').dirty">
+                      <p *ngIf="RegistroForm.get('primerApellido').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡El Apellido es requerido!
+                      </p>
+           </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Usuario" name="usuario" id="usuario" formControlName="usuario" [(ngModel)]='formularioSignup.usuario'>
+          </div>
+          <div
+                      *ngIf="RegistroForm.get('usuario').errors && RegistroForm.get('usuario').dirty">
+                      <p *ngIf="RegistroForm.get('usuario').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡El Usuario es requerido!
+                      </p>
+           </div>
+
+          <div class="input-group mb-4">
+            <input type="date" class="form-control" name="fecha" id="fecha" formControlName="fecha" [(ngModel)]='formularioSignup.fecha'>
+          </div>
+          <div
+                      *ngIf="RegistroForm.get('fecha').errors && RegistroForm.get('fecha').dirty">
+                      <p *ngIf="RegistroForm.get('fecha').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡La Fecha de nacimiento es requerida!
+                      </p>
+           </div>
+          
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Correo electrónico" name="correo" id="correo" formControlName="correo" [(ngModel)]='formularioSignup.correo'>
+          </div>
+          <div
+                      *ngIf="RegistroForm.get('correo').errors && RegistroForm.get('correo').dirty">
+                      <p *ngIf="RegistroForm.get('correo').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡El Correo electrónico es requerido!
+                      </p>
+           </div>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control numeros" placeholder="Teléfono" name="telefono" id="telefono" formControlName="telefono" [(ngModel)]='formularioSignup.telefono' maxlength="8">
+          </div>
+          <div
+                      *ngIf="RegistroForm.get('telefono').errors && RegistroForm.get('telefono').dirty">
+                      <p *ngIf="RegistroForm.get('telefono').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡El Teléfono es requerido!
+                      </p>
+           </div>
+
+
+            <div class="input-group mb-3" >
+              <label class="texto-gris mt-3 mr-3">Género: </label>
+              <select class="form-control" placeholder="Sexo" name="sexo" id="sexo"  formControlName="sexo" [(ngModel)]='formularioSignup.sexo' >
+                <option>Femenino</option>
+                <option>Masculino</option>
+              </select>
+            </div>
+          
+          <div
+                      *ngIf="RegistroForm.get('sexo').errors && RegistroForm.get('sexo').dirty">
+                      <p *ngIf="RegistroForm.get('sexo').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡El género es requerido!
+                      </p>
+           </div>
+        
+          <div
+                      *ngIf="RegistroForm.get('rol').errors && RegistroForm.get('rol').dirty">
+                      <p *ngIf="RegistroForm.get('rol').hasError('rol')"
+                        class="texto-naranja fadeIn">
+                        ¡El género es requerido!
+                      </p>
+           </div>
+
+          <div class="input-group mb-4">
+            <input type="password" class="form-control" placeholder="Password" name="password" id="password" formControlName="password" [(ngModel)]='formularioSignup.password'>
+          </div>
+          <div
+                      *ngIf="RegistroForm.get('password').errors && RegistroForm.get('password').dirty">
+                      <p *ngIf="RegistroForm.get('password').hasError('required')"
+                        class="texto-naranja fadeIn">
+                        ¡La contraseña es requerida!
+                      </p>
+           </div>
+
+                
+            <div class="input-group mb-3" >
+              <label class="texto-gris mt-3 mr-3">Rol: </label>
+              <select class="form-control" placeholder="Rol" name="rol" id="rol"  formControlName="rol" [(ngModel)]='formularioSignup.rol' >
+                
+                <option value="1">Cliente</option>
+                <option value="2">Anfitrión</option>
+              </select>
+            </div>
+              <div
+                  *ngIf="RegistroForm.get('rol').errors && RegistroForm.get('rol').dirty">
+                        <p *ngIf="RegistroForm.get('rol').hasError('required')"
+                          class="texto-naranja fadeIn">
+                          ¡Rol es requerido!
+                        </p>
+              </div>
+              
+
+        </form>
+          
+          <button class="btn btn-outline-primary btn-block mb-4" (click)="SignUp(RegistroForm.value, RegistroForm.valid)" ><i class="feather icon-check-circle"></i> Regístrarme </button>
+          <div class="text-center">
+            <div class="saprator my-4"><span>OR</span></div>
+            <p class="mt-4">¿Ya tienes una cuenta? <a [routerLink]="['/auth/signin-v2']" class="f-w-400">Inicia Sesión</a></p>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

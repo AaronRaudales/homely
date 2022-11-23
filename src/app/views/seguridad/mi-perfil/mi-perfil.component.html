@@ -1,0 +1,309 @@
+<notifier-container></notifier-container>
+<div class="card fondo-blanco94">
+  <div class="row">
+    <div class="col-12">
+      <blockquote class="blockquote1 m-t-15 m-b-0 ">
+          <h1>Mi perfil</h1>
+          <h5 class="texto-gris">Información personal</h5>
+      </blockquote>
+
+   </div>
+
+   <div class="col-lg-6 col-md-12 row p-t-30 p-b-30">
+    <div class="col-md-12 ml-3 mr-5">
+        <div class="row">
+            <div class="col-md-10 ">
+              <form [formGroup]="RegistroForm" autocomplete="nope" novalidate>
+                <div class="contenedor1 ">
+                  <h3 class="texto-rosado text-center">Actualiza tu Información</h3>
+                  
+  
+                  <div class="row justify-content-start">
+                      <div class="col-12 col-sm-12 p-t-10 p-b-10">
+                          <h4>Información Personal </h4>
+
+                      </div>
+
+                      <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                          
+                          <label class="text-muted">Nombre</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text" ><i class="feather icon-user texto-rosado"></i></span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="Nombre" name="primerNombre" id="primerNombre" formControlName="primerNombre" [(ngModel)]='formularioPerfil.primerNombre' value="{{formularioPerfil.primerNombre}}">
+                              
+                          </div>
+                          <div
+                                  *ngIf="RegistroForm.get('primerNombre').errors && RegistroForm.get('primerNombre').dirty">
+                                  <p *ngIf="RegistroForm.get('primerNombre').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡El Nombre es requerido!
+                                  </p>
+                                </div>
+                          
+                      </div>
+                      <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                          <label class="text-muted">Apellido</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text" ><i class="feather icon-user texto-rosado"></i></span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="Apellido" name="primerApellido" id="primerApellido" formControlName="primerApellido" [(ngModel)]='formularioPerfil.primerApellido' value="{{formularioPerfil.primerApellido}}">
+                              
+                          </div>
+                          <div
+                                  *ngIf="RegistroForm.get('primerApellido').errors && RegistroForm.get('primerApellido').dirty">
+                                  <p *ngIf="RegistroForm.get('primerApellido').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡El Apellido es requerido!
+                                  </p>
+                                </div>
+                      </div>
+                  </div>
+  
+                  <div class="row justify-content-start">
+                      
+                      <div class="col-12 col-sm-12 p-t-10 p-b-10">
+                        <h4>Información de Contacto </h4>
+
+                      </div>
+                      <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                        
+                        <label class="text-muted">Correo electrónico</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" ><i class="feather icon-mail texto-rosado"></i></span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Correo electrónico" name="correoElectronico" id="correoElectronico" formControlName="correoElectronico" [(ngModel)]='formularioPerfil.correoElectronico' value="d@gmail.com">
+                            
+                        </div>
+                        <div
+                                  *ngIf="RegistroForm.get('correoElectronico').errors && RegistroForm.get('correoElectronico').dirty">
+                                  <p *ngIf="RegistroForm.get('correoElectronico').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡El Correo electrónico es requerido!
+                                  </p>
+                                </div>
+                        
+                    </div>
+                    <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                        
+                      <label class="text-muted">Teléfono</label>
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" ><i class="feather icon-phone texto-rosado"></i></span>
+                          </div>
+                          <input type="text" class="form-control numeros" placeholder="Teléfono" name="telefono" id="telefono" formControlName="telefono" [(ngModel)]='formularioPerfil.telefono' maxlength="8" value="823798">
+                          
+                      </div>
+                      <div
+                                  *ngIf="RegistroForm.get('telefono').errors && RegistroForm.get('telefono').dirty">
+                                  <p *ngIf="RegistroForm.get('telefono').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡El Teléfono es requerido!
+                                  </p>
+                                </div>
+                      
+                  </div>
+                          
+                      
+                      
+                  </div>
+
+                  <div class="row justify-content-start">
+                      
+                    <div class="col-12 col-sm-12 p-t-10 p-b-10">
+                      <h4>Información Adicional </h4>
+
+                    </div>
+                    <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                      
+                      <label class="text-muted">Nombre de usuario</label>
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" ><i class="feather icon-user texto-rosado"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Usuario" name="nombreUsuario" id="nombreUsuario" formControlName="nombreUsuario" [(ngModel)]='formularioPerfil.nombreUsuario'>
+                          
+                      </div>
+                      <div
+                                  *ngIf="RegistroForm.get('nombreUsuario').errors && RegistroForm.get('nombreUsuario').dirty">
+                                  <p *ngIf="RegistroForm.get('nombreUsuario').hasError('required')"
+                                    class="texto-naranja fadeIn">
+                                    ¡El Usuario es requerido!
+                                  </p>
+                                </div>
+                      
+                  </div>
+                  <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                      
+                    <label class="text-muted">Foto de perfil</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" ><i class="feather icon-image texto-rosado"></i></span>
+                        </div>
+                        <input type="file" class="form-control" name="imagenPerfil" formControlName="imagenPerfil" id="imagenPerfil" formControlName="imagenPerfil" accept="image/*" (change)="handleFileSelectImagen1($event)"/>
+                        
+                    </div>
+                    
+                </div>
+                        
+                    
+                    
+                </div>
+
+                  <div class="div-btn-centro btn-gruop mb-3 p-t-30 p-b-30">
+                      <button type="button" class="btn btn-outline-info ml-2" (click)="Update(RegistroForm.value, RegistroForm.valid)" ><strong><span class="feather icon-check-square"  > </span> Actualizar</strong></button>
+                  </div>
+                  
+      
+                 
+  
+              </div>
+
+              </form>
+                
+            </div>
+            
+
+        </div>
+
+    </div>
+
+   </div> 
+   <div class="col-lg-5 col-md-12 row p-t-30 p-b-30">
+      <div class="col-md-12 ml-3 mr-5">
+        
+        <div class="row">
+          <div class="contenedor1">
+            <div class="div-img-centro p-t-10 p-b-10">
+              <img src="{{imagenPerfil}}" class="img-radius wid-100 mb-4" alt="Imagen de Perfil">
+            </div>
+            <h3 class="mb-4 text-center texto-rosado" >{{formularioPerfil.primerNombre}} {{formularioPerfil.primerApellido}} </h3>
+            <div class="row">
+              <div class="col">
+                <h4><span class="card-title badge m-r-10 badge-pill badge-dark"> Es cliente: {{dataConst.getDescripcionSiNoBooleanByValor(formularioPerfil.esCliente)}}</span></h4>
+              </div>
+              <div class="col">
+                <h4><span class="card-title badge m-r-10 badge-pill badge-success"> Rol actual: {{dataConst.getDescripcionRolById(formularioPerfil.rolPreferido)}}</span></h4>
+                
+              </div>
+              <div class="col">
+                <h4><span class="card-title badge m-r-10 badge-pill badge-warning"> Es Anfitrión: {{dataConst.getDescripcionSiNoBooleanByValor(formularioPerfil.esAnfitrion)}}</span></h4>
+              </div>
+            </div>
+            
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="latest-update-box">
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Nombre</p>
+                      
+                    </div>
+                    <div class="col">
+                      <i class="feather icon-user update-icon1"></i>
+                      
+                    </div>
+                    <div class="col">
+                      <span class="text-dark"> {{formularioPerfil.primerNombre}}</span>
+                      
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Apellido</p>
+                    </div>
+                    <div class="col">
+                      <i class="feather icon-user bg-c-red update-icon1"></i>
+                    </div>
+                    <div class="col">
+                       <span class="text-dark"> {{formularioPerfil.primerApellido}}</span>
+                  
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Nombre Usuario </p>
+                      
+                    </div>
+                    <div class="col">
+                      
+                      <i class="feather icon-user fa-lg bg-facebook update-icon1"></i>
+                    </div>
+                    <div class="col">
+                       <span class="text-dark"> {{formularioPerfil.nombreUsuario}}</span>
+                      
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col">
+                      
+                      <p class="text-muted m-b-0 d-inline-flex">Fecha de Nacimiento </p>
+                    </div>
+                    <div class="col">
+                      
+                      <i class="feather icon-calendar bg-c-green update-icon1"></i>
+                    </div>
+                    <div class="col">
+                      <span class="text-dark"> {{formularioPerfil.fechaNacimiento  | date: 'dd-MM-yyyy'}}</span>
+                      
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col">
+                      
+                      <p class="text-muted m-b-0 d-inline-flex">Correo </p>
+                    </div>
+                    <div class="col">
+                      <i class="feather icon-mail fa-lg bg-c-yellow update-icon1"></i>
+                    </div>
+                    <div class="col">
+                       <small class="text-dark" > {{formularioPerfil.correoElectronico}}</small>
+                      
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col">
+                      
+                      <p class="text-muted m-b-0 d-inline-flex">Teléfono </p>
+                    </div>
+                    <div class="col">
+                      
+                      <i class="feather icon-phone bg-c-red update-icon1"></i>
+                    </div>
+                    <div class="col">
+                       <span class="text-dark"> {{formularioPerfil.telefono}}</span>
+                      
+                    </div>
+                  </div>
+          
+                </div>
+  
+              </div>
+
+            </div>
+
+            
+            
+
+          
+            
+            
+            
+          </div>
+          
+        </div>
+
+        
+        
+
+
+   </div>
+
+   </div>
+
+  
+</div>

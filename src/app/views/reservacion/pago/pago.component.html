@@ -1,0 +1,276 @@
+
+<app-ui-modal #modalPago [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+        <h5 class="modal-title"> Pago de Reservación </h5>
+        <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalPago.hide(); hideModal()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <div class="card fondo-blanco94">
+            <div class="row">
+                <div class="col-12">
+                    <blockquote class="blockquote1 m-t-15 m-b-0 ">
+                        <h1>Pago de reservación</h1>
+                        <h5 class="texto-gris">confirma tu pago para aprobar tu reservación</h5>
+                    </blockquote>
+        
+                </div>
+                <div class="col-lg-6 col-md-12 row p-t-30 p-b-30">
+                    <div class="col-md-12 ml-3 mr-5">
+                        <div class="row">
+                            <div class="col-md-10 ">
+                                <div class="contenedor1 ">
+                                    <h3 class="texto-rosado">Tu reservación</h3>
+        
+                                    <form [formGroup]="RegistroForm" autocomplete="nope" novalidate>
+                                        <div class="row justify-content-start">
+                                            <div class="col-12 col-sm-12 p-t-10 p-b-10">
+                                                <h4>Fecha de reservación </h4>
+            
+                                            </div>
+            
+                                            <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                                                
+                                                <label class="text-muted">Fecha Llegada</label>
+                                                
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="feather icon-calendar texto-rosado"></i></span>
+                                                    </div>
+                                                    <input type="date" min= "{{registro.inicioFechaDisponible | date: 'yyyy-MM-dd' }}" max="{{registro.finFechaDisponible | date: 'yyyy-MM-dd'}}" class="form-control" placeholder="Fecha ingreso" name="fechaIngreso" id="fechaIngreso" formControlName="fechaIngreso" [(ngModel)]='reservacion.fechaIngreso'>
+                                                    
+                                                </div>
+                                                <div
+                                                    *ngIf="RegistroForm.get('fechaIngreso').errors && RegistroForm.get('fechaIngreso').dirty">
+                                                    <p *ngIf="RegistroForm.get('fechaIngreso').hasError('required')"
+                                                    class="texto-naranja fadeIn">
+                                                    ¡La fecha de llegada es requerida!
+                                                    </p>
+                                                </div>
+        
+                                                
+                                            </div>
+                                            <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                                                <label class="text-muted">Fecha Salida</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="feather icon-calendar texto-rosado"></i></span>
+                                                    </div>
+                                                    <input type="date" class="form-control" min= "{{registro.inicioFechaDisponible | date: 'yyyy-MM-dd'}}" max="{{registro.finFechaDisponible | date: 'yyyy-MM-dd'}}" placeholder="Fecha salida" name="fechaSalida" id="fechaSalida" formControlName="fechaSalida" [(ngModel)]='reservacion.fechaSalida'>
+                                                    
+                                                </div>
+                                                <div
+                                                    *ngIf="RegistroForm.get('fechaSalida').errors && RegistroForm.get('fechaSalida').dirty">
+                                                    <p *ngIf="RegistroForm.get('fechaSalida').hasError('required')"
+                                                    class="texto-naranja fadeIn">
+                                                    ¡La fecha de salida es requerida!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="row justify-content-start">
+                                            <div class="col-6 col-sm-6 p-t-20 p-b-20">
+                                                <h4>Cantidad de huéspedes </h4>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="feather icon-users texto-rosado"></i></span>
+                                                    </div>
+                                                    <input type="text" class="form-control numeros" placeholder="Huéspedes" name="cantidadPersonas" id="cantidadPersonas" formControlName="cantidadPersonas" [(ngModel)]='reservacion.cantidadPersonas' maxlength="3">
+                                                    
+                                                </div>
+                                                <div
+                                                    *ngIf="RegistroForm.get('cantidadPersonas').errors && RegistroForm.get('cantidadPersonas').dirty">
+                                                    <p *ngIf="RegistroForm.get('cantidadPersonas').hasError('required')"
+                                                    class="texto-naranja fadeIn">
+                                                    ¡La cantidad de huéspedes es requerida!
+                                                    </p>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+        
+                                    </form>
+                                    
+                    
+                                    
+                    
+                                    
+                    
+                                    <h3>Paga con tarjeta</h3>
+                                    
+                    
+                                    <form [formGroup]="TarjetaForm" autocomplete="nope" novalidate>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 p-t-15 p-b-15">
+                                                <label class="text-muted">Número de tarjeta</label>
+                                                <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="feather icon-credit-card texto-rosado"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control numeros" placeholder="Número de tarjeta" name="noTarjeta" id="noTarjeta" formControlName="noTarjeta" [(ngModel)]='tarjeta.noTarjeta' maxlength="16">
+                                                
+                                                </div>
+                                                <div
+                                                    *ngIf="TarjetaForm.get('noTarjeta').errors && TarjetaForm.get('noTarjeta').dirty">
+                                                    <p *ngIf="TarjetaForm.get('noTarjeta').hasError('required')"
+                                                    class="texto-naranja fadeIn">
+                                                    ¡El número de tarjeta es requerido!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Force next columns to break to new line at md breakpoint and up -->
+                                            <div class="w-100 d-none d-md-block"></div>
+                                
+                                            <div class="col-6 col-sm-6 p-t-20 p-b-20 ">
+                                                <label class="text-muted">Caducidad</label>
+                                                <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><i class="feather icon-calendar texto-rosado"></i></span>
+                                                </div>
+                                                <input type="date" class="form-control " placeholder="Caducidad" name="fechaVencimientoT" id="fechaVencimientoT" formControlName="fechaVencimientoT" [(ngModel)]='tarjeta.fechaVencimientoT' >
+                                                
+                                                </div>
+                                                <div
+                                                    *ngIf="TarjetaForm.get('fechaVencimientoT').errors && TarjetaForm.get('fechaVencimientoT').dirty">
+                                                    <p *ngIf="TarjetaForm.get('fechaVencimientoT').hasError('required')"
+                                                    class="texto-naranja fadeIn">
+                                                    ¡La fecha de caducidad es requerida!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-sm-6 p-t-20 p-b-20">
+                                                <label class="text-muted">CCV</label>
+                                                <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" ><i class="feather icon-lock texto-rosado"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control numeros" placeholder="CVV" name="codigoCVV" id="codigoCVV" formControlName="codigoCVV" [(ngModel)]='tarjeta.codigoCVV' maxlength="3">
+                                                
+                                                </div>
+                                                <div
+                                                    *ngIf="TarjetaForm.get('codigoCVV').errors && TarjetaForm.get('codigoCVV').dirty">
+                                                    <p *ngIf="TarjetaForm.get('codigoCVV').hasError('required')"
+                                                    class="texto-naranja fadeIn">
+                                                    ¡El código de seguridad es requerido!
+                                                    </p>
+                                                </div>
+            
+                                            </div>
+                        
+                                        </div>
+        
+                                    </form>
+                                    
+                                    <div class="div-btn-centro btn-gruop mb-3">
+                                        <button type="button" class="btn btn-outline-info ml-2" (click)="Reservar(RegistroForm.value, TarjetaForm.value, RegistroForm.valid)"><strong><span class="feather icon-check-square"  > </span> Reservar</strong></button>
+                                        <button type="button" class="btn btn-outline-danger ml-2" (click)="cancelar()"><strong><span class="feather icon-slash"  > </span> No reservar</strong></button>
+                                    </div>
+                                    
+                        
+                                   
+                    
+                                </div>
+                            </div>
+                            
+            
+                        </div>
+            
+                    </div>
+        
+                </div> 
+                <div class="col-lg-4 col-md-12 row p-t-30 p-b-30">
+                    <div class="col-md-12 ml-3 mr-5">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <app-card [hidHeader]="true" >
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <img class="d-block w-100" src="{{registro.image_1}}" alt="First Slide">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img class="d-block w-100" class="d-block w-100" src="{{registro.image_2}}" alt="First Slide"><br/>
+                                            <img class="d-block w-100" src="{{registro.image_3}}" alt="First Slide">
+                                        </div>
+        
+                                    </div>
+                                    <br/>
+                                    <h2 class="texto-rosado text-center">{{registro.titulo}} </h2>
+                                    <p class="text-muted text-center">{{registro.descripcion}}
+                                    </p>
+                                    <hr>
+                                    <h4 class="text-dark text-center">Información de precio</h4>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6 class="texto-gris" (click)="info()">{{registro.precioPorNoche}} x {{reservacion.cantidadNoches}} noches</h6>
+                                            <h6 class="texto-gris">Sub total</h6>
+                                            <h6 class="texto-dark">Total</h6>
+            
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="texto-gris text-right">{{reservacion.subTotal}}</h6>
+                                            <h6 class="texto-gris text-right">{{reservacion.subTotal}}</h6>
+                                            <h6 class="texto-dark text-right">{{reservacion.total}}</h6>
+            
+                                        </div>
+        
+                                    </div>
+                                    
+                                    
+                                        
+        
+                                    
+                                    
+        
+        
+                                </app-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-lg-5 col-md-12 row p-t-30 p-b-30">
+                    <div class="col-md-12 ml-3 mr-5">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <app-card [hidHeader]="true" >
+                                    <h3 class="text-dark">Tu reservación</h3>
+                                    
+                                    <h4 class="text-muted">Fecha Llegada</h4>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" ><i class="feather icon-credit-card"></i></span>
+                                        </div>
+                                        <input type="date" class="form-control" id="validationTooltipUsername" placeholder="Caducidad" aria-describedby="validationTooltipUsernamePrepend" required>
+                                        
+                                    </div>
+                                    <h4 class="text-muted">Fecha salida</h4>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" ><i class="feather icon-credit-card"></i></span>
+                                        </div>
+                                        <input type="date" class="form-control" id="validationTooltipUsername" placeholder="Caducidad" aria-describedby="validationTooltipUsernamePrepend" required>
+                                        
+                                    </div>
+                                    
+        
+                                    
+                                </app-card>
+        
+                            </div>
+                        </div>
+                    </div>
+                    
+        
+                </div>-->
+                
+            </div>
+        </div>
+
+    </div>
+
+
+</app-ui-modal>
+
+
+

@@ -1,0 +1,522 @@
+<notifier-container></notifier-container>
+
+  
+<div class="card fondo-blanco94" >
+  
+  <div class="row">
+    <div class="col-md-12">
+        <app-card cardTitle="Casa de Campo" [options]="false" [hidHeader]="true">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="d-block w-100" src="{{registro.image_1}}" alt="First Slide">
+              
+            </div>
+            <div class="col-md-4">
+              <img class="d-block w-100" src="{{registro.image_2}}" alt="Ssecond Slide">
+              
+              
+            </div>
+            <div class="col-md-4">
+              <img class="d-block w-100" src="{{registro.image_3}}" alt="Third Slide">
+              
+              
+            </div>
+          </div>
+  
+        </app-card>
+      
+    </div>
+    <div class="col-lg-7 col-md-12 row">
+    
+    <div class="col-md-12 ml-3 mr-5">
+      
+      <div class="row">
+        <div class="col-md-12 ">
+          <app-card [hidHeader]="true" >
+            <div class="row">
+                
+              <div class="col">
+                <h3 class="m-b-15 texto-rosado">{{registro.titulo}} </h3>
+                <h5><span class="float-right f-13  card-title badge m-r-10 badge-pill badge-success" > {{dataConst.getDescripcionReservacionPropiedadById(registro.reservacion)}}</span> </h5>
+                <blockquote class="blockquote m-t-15 m-b-0">
+                  <h5>Descripción</h5>
+                  <h6 class="m-b-0 text-muted"><strong><span class="feather icon-home"></span>{{registro.descripcion}}</strong></h6>
+                  
+                  
+                </blockquote>
+              </div>
+            </div>
+          </app-card>
+        </div>
+        <div class="col-md-4">
+          <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-green">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h4 class="text-c-green">L. {{registro.precioPorNoche}}</h4>
+                <h6 class="text-muted m-b-0">Precio por noche</h6>
+              </div>
+              <div class="col-4 text-right">
+                <i class="feather icon-credit-card f-28"></i>
+              </div>
+            </div>
+            <div class="app-card-footer">
+              <div class="row align-items-center">
+                <!--<div class="col-9">
+                  <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                </div>
+                <div class="col-3 text-right">
+                  <i class="feather icon-home text-white f-16"></i>
+                </div>-->
+              </div>
+            </div>
+          </app-card>
+        </div>
+        <div class="col-md-8">
+          <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-blue">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h5 class="text-c-blue">{{registro.inicioFechaDisponible | date: 'dd-MMM-yyyy'}} al {{registro.finFechaDisponible | date: 'dd-MMM-yyyy'}}</h5>
+                <h6 class="text-muted m-b-0">Fecha disponible</h6>
+              </div>
+              <div class="col-4 text-right">
+                <i class="feather icon-calendar f-28"></i>
+              </div>
+            </div>
+            <div class="app-card-footer">
+              <div class="row align-items-center">
+                <!--<div class="col-9">
+                  <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                </div>
+                <div class="col-3 text-right">
+                  <i class="feather icon-home text-white f-16"></i>
+                </div>-->
+              </div>
+            </div>
+          </app-card>
+        </div>
+        <div class="col-md-4">
+          <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-red">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h5 class="text-c-red">{{registro.cantidadHuespedes}} huéspedes</h5>
+                <h6 class="text-muted m-b-0">Cantidad de huéspedes</h6>
+              </div>
+              <div class="col-4 text-right">
+                <i class="feather icon-users f-28"></i>
+              </div>
+            </div>
+            <div class="app-card-footer">
+              <div class="row align-items-center">
+                <!--<div class="col-9">
+                  <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                </div>
+                <div class="col-3 text-right">
+                  <i class="feather icon-home text-white f-16"></i>
+                </div>-->
+              </div>
+            </div>
+          </app-card>
+        </div>
+        <div class="col-md-8">
+          <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-yellow">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h5 class="text-c-yellow">{{registro.direccion}}</h5>
+                <h6 class="text-muted m-b-0">Dirección</h6>
+              </div>
+              <div class="col-4 text-right">
+                <i class="feather icon-map-pin f-28"></i>
+              </div>
+            </div>
+            <div class="app-card-footer">
+              <div class="row align-items-center">
+                <!--<div class="col-9">
+                  <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                </div>
+                <div class="col-3 text-right">
+                  <i class="feather icon-home text-white f-16"></i>
+                </div>-->
+              </div>
+            </div>
+          </app-card>
+        </div>
+        
+      </div>
+      <div class="row">
+        
+        <div class="col-md-12 ">
+          <app-card cardTitle="Detalle del Anfitrión" headerClass="borderless" cardClass="table-card review-card">
+            <div class="review-block">
+              <div class="row">
+                <div class="col-sm-auto p-r-0" *ngIf="registro.imagenPerfil!=null">
+                  <img src="{{registro.imagenPerfil}}" alt="user image" class="img-radius profile-img cust-img m-b-15" (click)="openFeedAnfitrion(registro)">
+                </div>
+                <div class="col">
+                  <h6 class="m-b-15" (click)="openFeedAnfitrion(registro)">{{registro.primerNombre}} {{registro.primerApellido}}<span class="float-right f-13 text-muted"> Dueño de la propiedad</span></h6>
+                  <p class="m-t-15 m-b-15 text-muted">Estoy encantado de recibirte en mi propiedad, por favor ven y disfruta.</p>
+                  <blockquote class="blockquote m-t-15 m-b-0">
+                    <h5>Información de contacto</h5>
+                    <h6 class="m-b-0 text-muted"><strong><span class="feather icon-mail"></span> Correo electrónico : {{registro.correoElectronico}}</strong></h6>
+                    <h6 class="m-b-0 text-muted"><strong><span class="feather icon-phone-call"></span> Teléfono: {{registro.telefono}}</strong></h6>
+                    
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+        
+          </app-card>
+        </div>
+      </div>
+    </div>
+    </div>
+  <!-- latest customers end -->
+  <div class="col-lg-5 col-md-12 row">
+    
+    <div class="col-md-12 ">
+      <app-card cardTitle="Detalle de la Propiedad" cardClass="latest-update-card">
+        <div class="latest-update-box">
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="feather icon-home bg-twitter update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Tipo de propiedad</p>
+              <h6>{{registro.tipoPropiedad}}</h6>
+            </div>
+          </div>
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="feather icon-home bg-c-red update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Tipo de espacio</p>
+              <h6>{{registro.tipoEspacio}}</h6>
+          
+            </div>
+          </div>
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="fas fa-bed fa-lg bg-facebook update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Número de habitaciones</p>
+              <h6>{{registro.numHabitaciones}}</h6>
+            </div>
+          </div>
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="fas	fa-car-side bg-c-green update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Estacionamiento - Cantidad de autos</p>
+              <h6>{{registro.estacionamiento}}</h6>
+            </div>
+          </div>
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="fas fa-bath fa-lg bg-c-yellow update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Cantidad de baños</p>
+              <h6>{{registro.cantidadBanios}}</h6>
+            </div>
+          </div>
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="feather icon-wind bg-c-red update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Aire acondicionado</p>
+              <h6>{{(registro.aireAcondicionado==1)?'SI': 'NO'}}</h6>
+            </div>
+          </div>
+          <div class="row p-t-30 p-b-30">
+            <div class="col-auto text-right update-meta">
+              
+              <i class="feather icon-wifi bg-c-green update-icon"></i>
+            </div>
+            <div class="col">
+              <p class="text-muted m-b-0 d-inline-flex">Internet</p>
+              <h6>{{(registro.internet==1)?'SI': 'NO'}}</h6>
+            </div>
+          </div>
+  
+        </div>
+        
+      </app-card>
+    </div>
+    
+    
+  </div>
+  
+  </div>
+  
+  <div class="div-btn-centro btn-gruop mb-3">
+    <button type="button" class="btn btn-outline-info ml-2" (click)="back()" ><strong><span class="feather icon-arrow-left"  > </span> Volver</strong></button>
+    <button type="button" class="btn btn-outline-success ml-2" (click)="modalPago.show();openModal(registro)" ><strong><span class="feather icon-check-square"  > </span> Reservar</strong></button>
+  </div>
+
+</div>
+
+<!--AQUI EMPIEZA EL MODAL DE PAGO-->
+
+<app-ui-modal #modalPago [dialogClass]="'modal-lg'">
+  <div class="app-modal-header">
+    <h5 class="modal-title"> Pago de Reservación </h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalPago.hide(); hideModal(); cambiarReservacionPropiedad(dataConst.idReservacionDisponible)"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="app-modal-body">
+      <div class="row">
+          <div class="col-12">
+              <blockquote class="blockquote1 m-t-15 m-b-0 ">
+                  <h1>Pago de reservación</h1>
+                  <h5 class="texto-gris">confirma tu pago para aprobar tu reservación</h5>
+              </blockquote>
+  
+          </div>
+          <div class="col-lg-12 col-md-12 row p-t-30 p-b-30">
+              <div class="col-md-12 ml-3 mr-5">
+                  <div class="row">
+                      <div class="col-md-10 ">
+                          <div class="contenedor1 ">
+                              
+  
+                              <form [formGroup]="RegistroForm" autocomplete="nope" novalidate *ngIf="paso==1">
+                                <h3 class="texto-rosado">Tu reservación</h3>
+                                  <div class="row justify-content-start">
+                                      <div class="col-12 col-sm-12 p-t-10 p-b-10">
+                                          <h4>Fecha de reservación </h4>
+      
+                                      </div>
+      
+                                      <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                                          
+                                          <label class="text-muted">Fecha Llegada</label>
+                                          
+                                          <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                  <span class="input-group-text" ><i class="feather icon-calendar texto-rosado"></i></span>
+                                              </div>
+                                              <input type="date" min= "{{registro.inicioFechaDisponible | date: 'yyyy-MM-dd' }}" max="{{registro.finFechaDisponible | date: 'yyyy-MM-dd'}}" class="form-control" placeholder="Fecha ingreso" name="fechaIngreso" id="fechaIngreso" formControlName="fechaIngreso" [(ngModel)]='reservacion.fechaIngreso'>
+                                              
+                                          </div>
+                                          <div
+                                              *ngIf="RegistroForm.get('fechaIngreso').errors && RegistroForm.get('fechaIngreso').dirty">
+                                              <p *ngIf="RegistroForm.get('fechaIngreso').hasError('required')"
+                                              class="texto-naranja fadeIn">
+                                              ¡La fecha de llegada es requerida!
+                                              </p>
+                                          </div>
+  
+                                          
+                                      </div>
+                                      <div class="col-6 col-sm-6 p-t-10 p-b-10">
+                                          <label class="text-muted">Fecha Salida</label>
+                                          <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                  <span class="input-group-text" ><i class="feather icon-calendar texto-rosado"></i></span>
+                                              </div>
+                                              <input type="date" class="form-control" min= "{{registro.inicioFechaDisponible | date: 'yyyy-MM-dd'}}" max="{{registro.finFechaDisponible | date: 'yyyy-MM-dd'}}" placeholder="Fecha salida" name="fechaSalida" id="fechaSalida" formControlName="fechaSalida" [(ngModel)]='reservacion.fechaSalida'>
+                                              
+                                          </div>
+                                          <div
+                                              *ngIf="RegistroForm.get('fechaSalida').errors && RegistroForm.get('fechaSalida').dirty">
+                                              <p *ngIf="RegistroForm.get('fechaSalida').hasError('required')"
+                                              class="texto-naranja fadeIn">
+                                              ¡La fecha de salida es requerida!
+                                              </p>
+                                          </div>
+                                      </div>
+                                  </div>
+  
+                                  <div class="row justify-content-start">
+                                      <div class="col-6 col-sm-6 p-t-20 p-b-20">
+                                          <h4>Cantidad de huéspedes </h4>
+                                          <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                  <span class="input-group-text" ><i class="feather icon-users texto-rosado"></i></span>
+                                              </div>
+                                              <input type="number" class="form-control numeros" placeholder="Huéspedes" name="cantidadPersonas" id="cantidadPersonas" formControlName="cantidadPersonas" (blur)="validarCantidadHuespedes(reservacion.cantidadPersonas)" [(ngModel)]='reservacion.cantidadPersonas' maxlength="3">
+                                              
+                                          </div>
+                                          <div
+                                              *ngIf="RegistroForm.get('cantidadPersonas').errors && RegistroForm.get('cantidadPersonas').dirty">
+                                              <p *ngIf="RegistroForm.get('cantidadPersonas').hasError('required')"
+                                              class="texto-naranja fadeIn">
+                                              ¡La cantidad de huéspedes es requerida!
+                                              </p>
+                                          </div>
+                                          
+                                      </div>
+                                      
+                                  </div>
+  
+                              </form>
+                              
+              
+                              
+              
+                              
+              
+                              
+                              
+              
+                              <form [formGroup]="TarjetaForm" autocomplete="nope" novalidate *ngIf="paso==1">
+                                <h3>Paga con tarjeta</h3>
+                                  <div class="row">
+                                      <div class="col-12 col-sm-12 p-t-15 p-b-15">
+                                          <label class="text-muted">Número de tarjeta</label>
+                                          <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="feather icon-credit-card texto-rosado"></i></span>
+                                          </div>
+                                          <input type="text" class="form-control numeros" placeholder="Número de tarjeta" name="noTarjeta" id="noTarjeta" formControlName="noTarjeta" [(ngModel)]='tarjeta.noTarjeta' maxlength="16">
+                                          
+                                          </div>
+                                          <div
+                                              *ngIf="TarjetaForm.get('noTarjeta').errors && TarjetaForm.get('noTarjeta').dirty">
+                                              <p *ngIf="TarjetaForm.get('noTarjeta').hasError('required')"
+                                              class="texto-naranja fadeIn">
+                                              ¡El número de tarjeta es requerido!
+                                              </p>
+                                          </div>
+                                      </div>
+                                      <!-- Force next columns to break to new line at md breakpoint and up -->
+                                      <div class="w-100 d-none d-md-block"></div>
+                          
+                                      <div class="col-6 col-sm-6 p-t-20 p-b-20 ">
+                                          <label class="text-muted">Caducidad</label>
+                                          <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text" ><i class="feather icon-calendar texto-rosado"></i></span>
+                                          </div>
+                                          <input type="date" class="form-control " placeholder="Caducidad" name="fechaVencimientoT" id="fechaVencimientoT" formControlName="fechaVencimientoT" [(ngModel)]='tarjeta.fechaVencimientoT' >
+                                          
+                                          </div>
+                                          <div
+                                              *ngIf="TarjetaForm.get('fechaVencimientoT').errors && TarjetaForm.get('fechaVencimientoT').dirty">
+                                              <p *ngIf="TarjetaForm.get('fechaVencimientoT').hasError('required')"
+                                              class="texto-naranja fadeIn">
+                                              ¡La fecha de caducidad es requerida!
+                                              </p>
+                                          </div>
+                                      </div>
+                                      <div class="col-6 col-sm-6 p-t-20 p-b-20">
+                                          <label class="text-muted">CCV</label>
+                                          <div class="input-group">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text" ><i class="feather icon-lock texto-rosado"></i></span>
+                                          </div>
+                                          <input type="text" class="form-control numeros" placeholder="CVV" name="codigoCVV" id="codigoCVV" formControlName="codigoCVV" [(ngModel)]='tarjeta.codigoCVV' maxlength="3">
+                                          
+                                          </div>
+                                          <div
+                                              *ngIf="TarjetaForm.get('codigoCVV').errors && TarjetaForm.get('codigoCVV').dirty">
+                                              <p *ngIf="TarjetaForm.get('codigoCVV').hasError('required')"
+                                              class="texto-naranja fadeIn">
+                                              ¡El código de seguridad es requerido!
+                                              </p>
+                                          </div>
+      
+                                      </div>
+                  
+                                  </div>
+  
+                              </form>
+                              <div *ngIf="paso==2">
+                                
+                                  <div class="col-md-12 ml-3 mr-5">
+                                      <div class="row">
+                                          <div class="col-md-12 ">
+                                              
+                                                  <div class="row">
+                                                      <div class="col-md-8">
+                                                          <img class="d-block w-100" src="{{registro.image_1}}" alt="First Slide">
+                                                      </div>
+                                                      <div class="col-md-4">
+                                                          <img class="d-block w-100" class="d-block w-100" src="{{registro.image_2}}" alt="First Slide"><br/>
+                                                          <img class="d-block w-100" src="{{registro.image_3}}" alt="First Slide">
+                                                      </div>
+                      
+                                                  </div>
+                                                  <br/>
+                                                  <h2 class="texto-rosado text-center">{{registro.titulo}} </h2>
+                                                  <p class="text-muted text-center">{{registro.descripcion}}
+                                                  </p>
+                                                  <hr>
+                                                  <h4 class="text-dark text-center">Información de precio</h4>
+                                                  <hr>
+                                                  <div class="row">
+                                                      <div class="col">
+                                                          <h6 class="texto-gris">{{registro.precioPorNoche}} x {{reservacion.cantidadNoches}} noches</h6>
+                                                          <h6 class="texto-gris">Impuesto 15%</h6>
+                                                          <h6 class="texto-dark">Total</h6>
+                                                          <hr>
+                          
+                                                      </div>
+                                                      <div class="col">
+                                                          <h6 class="texto-gris text-right">{{reservacion.subTotal}}</h6>
+                                                          <h6 class="texto-gris text-right">{{reservacion.impuesto}}</h6>
+                                                          <h6 class="texto-dark text-right">{{reservacion.total}}</h6>
+                                                          <hr>
+                                                          
+                          
+                                                      </div>
+                                                      
+                      
+                                                  </div>
+                                                  
+                                                  
+                                                      
+                      
+                                                  
+                                                  
+                      
+                      
+                                              
+                                          </div>
+                                      </div>
+                                  </div>
+                              
+
+                              </div>
+                              
+                              <div class="div-btn-centro btn-gruop mb-3">
+                                  <button type="button" class="btn btn-outline-info ml-2"  (click)="addReservacion(reservacion, TarjetaForm.value, TarjetaForm.valid)" *ngIf="paso==2"><strong><span class="feather icon-check-square" > </span> Reservar</strong></button>
+                                  <button type="button" class="btn btn-outline-warning ml-2" *ngIf="paso==1"  (click)="pasoAdelante(TarjetaForm.valid); info()"><strong><span class="feather icon-arrow-right"> </span> Siguiente</strong></button>
+                                  <button type="button" class="btn btn-outline-warning ml-2" *ngIf="paso==2"  (click)="pasoAtras()"><strong><span class="feather icon-arrow-left"> </span> Atrás</strong></button>
+                                  <button type="button" class="btn btn-outline-danger ml-2" (click)="modalPago.hide(); hideModal(); cambiarReservacionPropiedad(dataConst.idReservacionDisponible)"><strong><span class="feather icon-slash"  > </span> No reservar</strong></button>
+                              </div>
+                              
+                  
+                              
+              
+                          </div>
+                      </div>
+                      
+      
+                  </div>
+      
+              </div>
+  
+          </div> 
+          
+          
+          
+      </div>
+    
+
+</div>
+
+</app-ui-modal>
+    
+
+
+
+

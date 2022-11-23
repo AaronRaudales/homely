@@ -1,0 +1,728 @@
+<notifier-container></notifier-container>
+<ngx-spinner class="myspiner" bdColor="rgba(51,51,51,0.8)" size="large" color="#fff" type="line-scale-party">
+  <p style="font-size: 20px; color: white" fullScreen="true">Cargando...</p>
+</ngx-spinner>
+
+<div class="view-info" *ngIf="Detallepropiedad">
+  <div class="card fondo-blanco94" >
+    
+    <div class="row">
+      <!--<div class="col-sm-12">
+        <app-card cardTitle="Casa de Campo" [options]="false" [hidHeader]="true">
+          <ngb-carousel>
+            <ng-template ngbSlide>
+              <img class="d-block w-100" src="assets/images/slider/header1.jpg" alt="First Slide">
+              <div class="carousel-caption d-none d-md-block">
+                <img src="assets/images/auth/auth-logo.png" alt="" class="img-fluid">
+                <h1 class="text-white my-4">¡Bienvenido a Homely!</h1>
+                <h4 class="text-white font-weight-normal">Empieza a reservar tu casa ideal<br/>conoce nuestras ofertas.</h4>
+              </div>
+              
+            </ng-template>
+            <ng-template ngbSlide>
+              <img class="d-block w-100" src="assets/images/slider/header2.jpg" alt="Ssecond Slide">
+              <div class="carousel-caption d-none d-md-block">
+                <img src="assets/images/auth/auth-logo.png" alt="" class="img-fluid">
+                <h1 class="text-white my-4">¡Bienvenido a Homely!</h1>
+                <h4 class="text-white font-weight-normal">Empieza a reservar tu casa ideal<br/>conoce nuestras ofertas.</h4>
+              </div>
+              
+            </ng-template>
+            <ng-template ngbSlide>
+              <img class="d-block w-100" src="assets/images/slider/header3.jpg" alt="Third Slide">
+              <div class="carousel-caption d-none d-md-block">
+                <img src="assets/images/auth/auth-logo.png" alt="" class="img-fluid">
+                <h1 class="text-white my-4">¡Bienvenido a Homely!</h1>
+                <h4 class="text-white font-weight-normal">Empieza a reservar tu casa ideal<br/>conoce nuestras ofertas.</h4>
+              </div>
+              
+            </ng-template>
+          </ngb-carousel>
+  
+        </app-card>
+      
+       </div>-->
+
+    <div class="contenedor">
+      <!--Filtro principal-->
+      <section>
+          <div class="section-center">
+              <div class="container">
+                  <div class="row">
+                      <div class="booking-form">
+                        <form [formGroup]="RegistroForm" autocomplete="nope" novalidate>
+                          <div class="row">
+                              <div class="col">
+                                  <div class="form-group">
+                                      <span class="form-label">* Ubicación</span>
+                                      <input class="form-control" type="text" name="direccion" id="direccion" formControlName="direccion" [(ngModel)]='filtros.direccion' >
+                                  </div>
+                                  <span class="in-out hidden-xs hidden-sm">&#8652;</span>
+                                  
+                              </div>
+                      
+                              <div class="col">
+                                  <div class="form-group">
+                                      <span class="form-label">Fecha incial</span>
+                                      <input class="form-control" type="date" name="inicioFechaDisponible" id="inicioFechaDisponible" formControlName="inicioFechaDisponible" [(ngModel)]='filtros.inicioFechaDisponible'>
+                                  </div>
+                                  <span class="in-out hidden-xs hidden-sm">&#8652;</span>
+                              </div>
+                      
+                              <div class="col">
+                                  <div class="form-group">
+                                      <span class="form-label">Fecha final</span>
+                                      <input class="form-control" type="date" name="finFechaDisponible" id="finFechaDisponible" formControlName="finFechaDisponible" [(ngModel)]='filtros.finFechaDisponible'>
+                                  </div>
+                                  <span class="in-out hidden-xs hidden-sm">&#8652;</span>
+                              </div>
+                      
+                              <div class="col">
+                                <div class="form-group">
+                                    <span class="form-label">Precio mínimo</span>
+                                    <input type="number" class="form-control numeros"   name="precioMinimo" id="precioMinimo" formControlName="precioMinimo" [(ngModel)]='filtros.precioMinimo' >
+                                </div>
+                                <span class="in-out hidden-xs hidden-sm">&#8652;</span>
+                            </div>
+                      
+                            <div class="col">
+                              <div class="form-group">
+                                  <span class="form-label">Precio máximo</span>
+                                  <input type="number" class="form-control numeros"   name="precioMaximo" id="precioMaximo" formControlName="precioMaximo" [(ngModel)]='filtros.precioMaximo'>
+                              </div>
+                              
+                            </div>
+                              
+                              
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <div class="form-group">
+                                  <span class="form-label">Tipo propiedad</span>
+                                  <ng-select dropdownPosition="bottom" class="letras" [items]="tipoPropiedades"
+                                    bindLabel="nombre" bindValue="nombre" formControlName="tipoPropiedad"  id="tipoPropiedad"
+                                    name="tipoPropiedad" 
+                                    placeholder="Seleccione Tipo de Propiedad" >
+                                  </ng-select>
+                              </div>
+                              <span class="in-out hidden-xs hidden-sm">&#8652;</span>
+                            </div>
+                      
+                          <div class="col">
+                            <div class="form-group">
+                                <span class="form-label">Tipo espacio</span>
+                                <ng-select dropdownPosition="bottom" class="letras" [items]="tipoEspacios"
+                                  bindLabel="nombre" bindValue="nombre" formControlName="tipoEspacio"  id="tipoEspacio"
+                                  name="tipoEspacio" 
+                                  placeholder="Seleccione Tipo de Espacio" >
+                                </ng-select>
+                            </div>
+                            
+                          </div>
+                          <div class="col">
+                            
+                            <div class="form-btn">
+                                <button class="submit-btn ml-auto" (click)="Filtros(RegistroForm.value, RegistroForm.valid)"><span class="feather icon-search"  > </span> Aplicar filtro</button>
+                            </div>
+                          </div>
+                          
+                          </div>
+                        </form>
+                       <hr>
+                        
+                          
+                      
+                                  
+                      </div>
+                          
+                  </div>
+              </div>
+          </div>
+          
+      </section>
+  </div>
+
+    <div class="col-sm-12">
+      <div class="contenedor1">
+        <blockquote class="blockquote m-b-0 ">
+          <div class="row">
+              <div class="col-md-8">
+                  
+                    <h1>Últimas propiedades agregadas</h1>
+                    <h5 class="texto-gris">Empieza a reservar ahora</h5>
+              </div>
+              <div class="col-md-4">
+                <div class="div-btn-centro btn-gruop mb-3">
+                  <button type="button" class="btn btn-outline-info ml-2" (click)="LoadPropiedades()" ><strong><span class="feather icon-globe"  ></span> TRAER TODAS LAS PROPIEDADES</strong></button>
+                </div>
+              </div>
+          </div>
+          
+        </blockquote>
+      </div>
+      
+    </div>
+  
+    </div>
+
+    <div class="col-md-12 row p-t-30 p-b-30">
+      <div *ngFor="let item of propiedades; let i= index" class="col-md-3">
+        <app-card cardTitle="{{item.titulo}}" [options]="false" [hidHeader]="false" blockClass="m-t-15" [isCardFooter]="true" footerClass="bg-dark">
+          <ngb-carousel [showNavigationArrows]="false" [interval]="3000">
+            <ng-template ngbSlide>
+              <img class="d-block card-img-top" src="{{item.image_1}}" alt="First Slide">
+              <div class="card-img-overlay">
+                <h4><span class="card-title badge m-r-10 badge-pill badge-success mr-4"> {{dataConst.getDescripcionReservacionPropiedadById(item.reservacion)}}</span> 
+                  
+                <span class="feather icon-heart texto-rosado" *ngIf="item.favorito==0" (click)="agregarFavorito(item)"></span>
+                <span class="feather icon-heart-on texto-rosado" *ngIf="item.favorito==1" (click)="eliminarFavorito(item)"></span>
+               
+                </h4>
+                
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img class="d-block card-img-top" src="{{item.image_2}}" alt="Second Slide">
+              <div class="card-img-overlay">
+               <h4><span class="card-title badge m-r-10 badge-pill badge-success mr-4"> {{dataConst.getDescripcionReservacionPropiedadById(item.reservacion)}}</span> 
+                  
+                <span class="feather icon-heart texto-rosado" *ngIf="item.favorito==0" (click)="agregarFavorito(item)"></span>
+                <span class="feather icon-heart-on texto-rosado" *ngIf="item.favorito==1" (click)="eliminarFavorito(item)"></span>
+               
+                </h4>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide>
+              <img class="d-block card-img-top" src="{{item.image_3}}" alt="Third Slide">
+              <div class="card-img-overlay">
+               <h4><span class="card-title badge m-r-10 badge-pill badge-success mr-4"> {{dataConst.getDescripcionReservacionPropiedadById(item.reservacion)}}</span> 
+                  
+                <span class="feather icon-heart texto-rosado" *ngIf="item.favorito==0" (click)="agregarFavorito(item)"></span>
+                <span class="feather icon-heart-on texto-rosado" *ngIf="item.favorito==1" (click)="eliminarFavorito(item)"></span>
+               
+                </h4>
+              </div>
+            </ng-template>
+            
+          </ngb-carousel>
+          <div class="content">
+            
+            
+            <div class="col p-t-10 p-b-10">
+              <div class="d-inline-block align-middle" (click)="openFeedAnfitrion(item)">
+                <img src="{{item.imagenPerfil}}"  *ngIf="item.imagenPerfil!=null" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                <div class="d-inline-block">
+                  <h6>{{item.primerNombre}} {{item.primerApellido}}</h6>
+                  <p class="text-muted m-b-0">Ánfitrión de la propiedad</p>
+                </div>
+              </div>
+            </div>
+
+            
+            
+            <div class="col p-t-5 p-b-5">
+              <h5 class="text-dark mt-3 mr-3"><strong><span class="fas fa-map-marker-alt fa-lg"></span> {{item.direccion}}</strong></h5>
+            </div>
+  
+            <div class="col p-t-5 p-b-5">
+              <h4><span class="badge m-r-10 badge-pill badge-light-primary"><strong>L. {{item.precioPorNoche}}</strong></span></h4>
+              
+            </div>
+          
+            <div class="row justify-content-md-center p-t-5 p-b-5">
+              
+              <div class="col-lg-2">
+                <i class="fas fa-bath text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{item.cantidadBanios}} </h6>
+              </div>
+              <div class="col-lg-2">
+                <i class="fas fa-bed text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{item.numHabitaciones}} </h6>
+              </div>
+              <div class="col-md-auto">
+                <i class="fas fa-wifi text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{(item.internet==1)?'Si': 'No'}} </h6>
+              </div>
+              <div class="col-lg-2">
+                <i class="fas fa-car text-dark fa-lg"></i>
+                <h6 class="text-dark mt-3 mr-3"> {{item.estacionamiento}} </h6>
+              </div>
+              
+            </div>
+            
+          </div>
+          <div class="app-card-footer">
+            <div class="row align-items-center">
+              <div class="col">
+                
+                <h6 (click)="openDetallePropiedad(item)"class="text-white">Ver detalles<span class="feather icon-chevron-right f-25"></span></h6>
+              </div>
+              <div class="col text-right">
+                <h5 class="text-white "><strong><span class="feather icon-calendar text-white f-16"></span> {{item.inicioFechaDisponible | date: 'dd-MMM'}} - {{item.finFechaDisponible | date: 'dd-MMM'}}</strong></h5>
+              </div>
+            </div>          
+          </div>
+  
+        </app-card>
+        
+      </div>
+    </div>    
+    
+    <!--<div *ngFor="let item of propiedades; let i= index" >
+      <div class="contenedor1">
+        <div class="row p-t-30 p-b-30">
+          <div class="col-md-12">
+            <div class="card-group">
+              <div class="col-lg-4 col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <app-card cardTitle="{{item.titulo}}" [options]="false" [hidHeader]="false" blockClass="m-t-15" [isCardFooter]="true" footerClass="bg-dark">
+                      <ngb-carousel [showNavigationArrows]="false" [interval]="3000">
+                        <ng-template ngbSlide>
+                          <img class="d-block w-100" src="{{item.image_1}}" alt="First Slide">
+                          <div class="card-img-overlay">
+                            <h4><span class="card-title badge m-r-10 badge-pill badge-success"> {{(item.reservacion==1)?'Disponible': 'Alquilado'}}</span></h4>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                          <img class="d-block w-100" src="{{item.image_2}}" alt="Ssecond Slide">
+                          <div class="card-img-overlay">
+                            <h4><span class="card-title badge m-r-10 badge-pill badge-success"> {{(item.reservacion==1)?'Disponible': 'Alquilado'}}</span></h4>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                          <img class="d-block w-100" src="{{item.image_3}}" alt="Third Slide">
+                          <div class="card-img-overlay">
+                            <h4><span class="card-title badge m-r-10 badge-pill badge-success"> {{(item.reservacion==1)?'Disponible': 'Alquilado'}}</span></h4>
+                          </div>
+                        </ng-template>
+                        
+                      </ngb-carousel>
+                      <div class="content">
+                        
+                        <div class="col p-t-10 p-b-10">
+                          <div class="d-inline-block align-middle">
+                            <img src="assets/images/user/avatar-4.jpg" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                            <div class="d-inline-block">
+                              <h5>David Aguilera</h5>
+                              <p class="text-muted m-b-0">Ánfitrión de la propiedad</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col p-t-5 p-b-5">
+                          <h4 class="mt-3 mr-3"><strong><span class="fas fa-map-marker-alt fa-lg"></span> {{item.direccion}}</strong></h4>
+                        </div>
+              
+                        <div class="col p-t-5 p-b-5">
+                          <h3><span class="badge m-r-10 badge-pill badge-light-primary"><strong><span class="fas fa-dollar-sign fa-lg"></span> {{item.precioPorNoche}}</strong></span></h3>
+                          
+                        </div>
+                      
+                        <div class="row justify-content-md-center p-t-5 p-b-5">
+                          
+                          <div class="col-lg-2">
+                            <i class="fas fa-bath text-dark fa-lg"></i>
+                            <h4 class="text-dark mt-3 mr-3"> {{item.cantidadBanios}} </h4>
+                          </div>
+                          <div class="col-lg-2">
+                            <i class="fas fa-bed text-dark fa-lg"></i>
+                            <h4 class="text-dark mt-3 mr-3"> {{item.numHabitaciones}} </h4>
+                          </div>
+                          <div class="col-lg-2">
+                            <i class="fas fa-wifi text-dark fa-lg"></i>
+                            <h4 class="text-dark mt-3 mr-3"> {{(item.internet==1)?'Si': 'No'}} </h4>
+                          </div>
+                          <div class="col-lg-2">
+                            <i class="fas fa-car text-dark fa-lg"></i>
+                            <h4 class="text-dark mt-3 mr-3"> {{item.estacionamiento}} </h4>
+                          </div>
+                          
+                        </div>
+              
+                      </div>
+                      <div class="app-card-footer">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <h5 (click)="toggleVolverPropiedad()"class="text-white">Ver detalles<span class="feather icon-chevron-right f-25"></span></h5>
+                          </div>
+                          <div class="col text-right">
+                            <h5 class="text-white "><strong><span class="feather icon-calendar text-white f-16"></span> {{item.inicioFechaDisponible | date: 'dd-MM'}} - {{item.finFechaDisponible | date: 'dd-MM'}}</strong></h5>
+                          </div>
+                        </div>          
+                      </div>
+              
+                    </app-card>
+
+                  </div>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+
+    </div>-->
+
+  </div>
+  
+
+</div>
+
+<!--ESTE ERA EL DETALLE DE LA PROPIEDAD QUE SE USABA PARA EL FEED DE CLIENTES ANTES, PERO LO CAMBIE PARA QUE AHORA EL DETALLE 
+SEA COMO EN EL FEED DE ANFITRION-->
+
+  <!--<div *ngIf="!Detallepropiedad">
+  
+    <div class="card fondo-blanco94" >
+      
+      <div class="row">
+        <div class="col-md-12">
+            <app-card cardTitle="Casa de Campo" [options]="false" [hidHeader]="true">
+              <div class="row">
+                <div class="col-md-4">
+                  <img class="d-block w-100" src="{{registro.image_1}}" alt="First Slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4 class="text-white">Lista para reservar. ¡Que esperas!</h4>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <img class="d-block w-100" src="{{registro.image_2}}" alt="Ssecond Slide">
+                 
+                  
+                </div>
+                <div class="col-md-4">
+                  <img class="d-block w-100" src="{{registro.image_3}}" alt="Third Slide">
+                  
+                  
+                </div>
+              </div>
+      
+            </app-card>
+          
+        </div>
+        <div class="col-lg-6 col-md-12 row">
+          <div class="col-md-12">
+            <app-card cardTitle="Casa de Campo" [options]="false" [hidHeader]="true">
+              <ngb-carousel>
+                <ng-template ngbSlide>
+                  <img class="d-block w-100" src="{{registro.image_1}}" alt="First Slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1 class="text-white my-4">{{registro.titulo}}</h1>
+                    <h4 class="text-white">Lista para reservar, ¡Que esperas!</h4>
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img class="d-block w-100" src="{{registro.image_2}}" alt="Ssecond Slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1 class="text-white my-4">{{registro.titulo}}</h1>
+                    <h4 class="text-white">Lista para reservar, ¡Que esperas!</h4>
+                  </div>
+                  
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img class="d-block w-100" src="{{registro.image_3}}" alt="Third Slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1 class="text-white my-4">{{registro.titulo}}</h1>
+                    <h4 class="text-white">Lista para reservar, ¡Que esperas!</h4>
+                  </div>
+                  
+                </ng-template>
+              </ngb-carousel>
+      
+            </app-card>
+          
+        </div>
+        <div class="col-md-12 ml-3 mr-5">
+          
+          <div class="row">
+            <div class="col-md-12 ">
+              <app-card [hidHeader]="true" >
+                <div class="row">
+                    
+                  <div class="col">
+                    <h3 class="m-b-15 texto-rosado">{{registro.titulo}} </h3>
+                    <h5><span class="float-right f-13  card-title badge m-r-10 badge-pill badge-success" > {{(registro.reservacion==1)?'Disponible': 'Alquilado'}}</span> </h5>
+                    <blockquote class="blockquote m-t-15 m-b-0">
+                      <h5>Descripción</h5>
+                      <h6 class="m-b-0 text-muted"><strong><span class="feather icon-home"></span>{{registro.descripcion}}</strong></h6>
+                      
+                      
+                    </blockquote>
+                  </div>
+                </div>
+              </app-card>
+            </div>
+            <div class="col-md-5">
+              <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-green">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h4 class="text-c-green">L. {{registro.precioPorNoche}}</h4>
+                    <h6 class="text-muted m-b-0">Precio por noche</h6>
+                  </div>
+                  <div class="col-4 text-right">
+                    <i class="feather icon-credit-card f-28"></i>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                    </div>
+                    <div class="col-3 text-right">
+                      <i class="feather icon-home text-white f-16"></i>
+                    </div>
+                  </div>
+                </div>
+              </app-card>
+            </div>
+            <div class="col-md-7">
+              <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-blue">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h4 class="text-c-blue">{{registro.inicioFechaDisponible | date: 'dd-MMM'}} al {{registro.finFechaDisponible | date: 'dd-MMM'}}</h4>
+                    <h6 class="text-muted m-b-0">Fecha disponible</h6>
+                  </div>
+                  <div class="col-4 text-right">
+                    <i class="feather icon-calendar f-28"></i>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                    </div>
+                    <div class="col-3 text-right">
+                      <i class="feather icon-home text-white f-16"></i>
+                    </div>
+                  </div>
+                </div>
+              </app-card>
+            </div>
+            <div class="col-md-5">
+              <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-red">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h4 class="text-c-red">{{registro.cantidadHuespedes}} huéspedes</h4>
+                    <h6 class="text-muted m-b-0">Cantidad de huéspedes</h6>
+                  </div>
+                  <div class="col-4 text-right">
+                    <i class="feather icon-users f-28"></i>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                    </div>
+                    <div class="col-3 text-right">
+                      <i class="feather icon-home text-white f-16"></i>
+                    </div>
+                  </div>
+                </div>
+              </app-card>
+            </div>
+            <div class="col-md-7">
+              <app-card [hidHeader]="true" [isCardFooter]="true" footerClass="bg-c-yellow">
+                <div class="row align-items-center">
+                  <div class="col-8">
+                    <h4 class="text-c-yellow">{{registro.direccion}}</h4>
+                    <h6 class="text-muted m-b-0">Dirección</h6>
+                  </div>
+                  <div class="col-4 text-right">
+                    <i class="feather icon-map-pin f-28"></i>
+                  </div>
+                </div>
+                <div class="app-card-footer">
+                  <div class="row align-items-center">
+                    <div class="col-9">
+                      <p class="text-white m-b-0">El mejor precio en el mejor lugar</p>
+                    </div>
+                    <div class="col-3 text-right">
+                      <i class="feather icon-home text-white f-16"></i>
+                    </div>
+                  </div>
+                </div>
+              </app-card>
+            </div>
+            
+          </div>
+          <div class="row">
+            
+            <div class="col-md-12 ">
+              <app-card cardTitle="Detalle del Anfitrión" headerClass="borderless" cardClass="table-card review-card">
+                <div class="review-block">
+                  <div class="row">
+                    <div class="col-sm-auto p-r-0" *ngIf="registro.imagenPerfil!=null" >
+                      <img src="{{registro.imagenPerfil}}" alt="user image" class="img-radius profile-img cust-img m-b-15">
+                    </div>
+                    <div class="col">
+                      <h6 class="m-b-15" (click)="openFeedAnfitrion(registro)">{{registro.primerNombre}} {{registro.primerApellido}}<span class="float-right f-13 text-muted"> Dueño de la propiedad</span></h6>
+                      <p class="m-t-15 m-b-15 text-muted">Estoy encantado de recibirte en mi propiedad, por favor ven y disfruta.</p>
+                      <blockquote class="blockquote m-t-15 m-b-0">
+                        <h5>Información de contacto</h5>
+                        <h6 class="m-b-0 text-muted"><strong><span class="feather icon-mail"></span> Correo electrónico : {{registro.correoElectronico}}</strong></h6>
+                        <h6 class="m-b-0 text-muted"><strong><span class="feather icon-phone-call"></span> Teléfono: {{registro.telefono}}</strong></h6>
+                        
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+            
+              </app-card>
+            </div>
+          </div>
+        </div>
+        </div>
+      
+      <div class="col-lg-6 col-md-12 row">
+        <div class="col-md-12 ml-3 mr-5">
+          <div class="row">
+            <div class="col-md-8 ">
+              <app-card cardTitle="Detalle de la Propiedad" cardClass="latest-update-card">
+                <div class="latest-update-box">
+                  <div class="row p-t-20 p-b-20">
+                    <div class="col-auto text-right update-meta">
+                      
+                      <i class="feather icon-home bg-twitter update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Tipo de propiedad</p>
+                      <h6>{{registro.tipoPropiedad}}</h6>
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col-auto text-right update-meta">
+                      
+                      <i class="feather icon-home bg-c-red update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Tipo de espacio</p>
+                      <h6>{{registro.tipoEspacio}}</h6>
+                  
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col-auto text-right update-meta">
+                      
+                      <i class="fas fa-bed fa-lg bg-facebook update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Número de habitaciones</p>
+                      <h6>{{registro.numHabitaciones}}</h6>
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col-auto text-right update-meta">
+                     
+                      <i class="fas	fa-car-side bg-c-green update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Estacionamiento - Cantidad de autos</p>
+                      <h6>{{registro.estacionamiento}}</h6>
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col-auto text-right update-meta">
+                      
+                      <i class="fas fa-bath fa-lg bg-c-yellow update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Cantidad de baños</p>
+                      <h6>{{registro.cantidadBanios}}</h6>
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col-auto text-right update-meta">
+                      
+                      <i class="feather icon-wind bg-c-red update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Aire acondicionado</p>
+                      <h6>{{(registro.aireAcondicionado==1)?'SI': 'NO'}}</h6>
+                    </div>
+                  </div>
+                  <div class="row p-t-15 p-b-15">
+                    <div class="col-auto text-right update-meta">
+                      
+                      <i class="feather icon-wifi bg-c-green update-icon"></i>
+                    </div>
+                    <div class="col">
+                      <p class="text-muted m-b-0 d-inline-flex">Internet</p>
+                      <h6>{{(registro.internet==1)?'SI': 'NO'}}</h6>
+                    </div>
+                  </div>
+          
+                </div>
+                
+              </app-card>
+            </div>
+            <div class="col-md-5">
+              <div class="room-booking">
+                <h4>{{registro.precioPorNoche}} <span>noche</span></h4>
+                <form class="mt-4" action="#">
+                    <div class="check-date">
+                        <label for="date-in">Llegada:</label>
+                        <input type="date" class="date-input" id="date-in">
+                        <i class="icon_calendar"></i>
+                    </div>
+                    <div class="check-date">
+                        <label for="date-out">Salida:</label>
+                        <input type="date" class="date-input" id="date-out">
+                        <i class="icon_calendar"></i>
+                    </div>
+                    <div class="check-date">
+                        <label for="guest">Huespedes:</label>
+                        <input type="text" class="date-input" id="date-out">
+                        
+                    </div>
+                    <button type="submit">Reserva</button>
+                    <div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="r-o">{{registro.precioPorNoche}} x <span>6 noches</span></td>
+                                    <td>$900</td>
+                                </tr>
+                                <tr class="total">
+                                    <td class="r-o ">Total</td>
+                                    <td>$1,027</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+              </div>
+      
+              
+              
+            </div>
+
+          </div>
+        </div>
+        
+       
+        
+        
+      </div>
+      
+      
+
+      
+      
+      </div>
+      
+      <div class="div-btn-centro btn-gruop mb-3">
+        <button type="button" class="btn btn-outline-info ml-2" (click)="toggleVolverPropiedad()" ><strong><span class="feather icon-arrow-left"  > </span> Volver</strong></button>
+        <button type="button" class="btn btn-outline-success ml-2" (click)="reservar(registro)" ><strong><span class="feather icon-check-square"  > </span> Reservar</strong></button>
+      </div>
+  
+    </div>
+    
+  </div>-->
+
+
+

@@ -1,0 +1,21 @@
+export const urls = {
+    urlLogin: "login",
+    urlForgotPassword: "forgot-password",
+    urlSignUp: "signup",
+    urlPropiedadesPost:"api/propiedades/add",
+    urlPropiedadesPut:"api/propiedades/edit",
+    urlPropiedadesByUsuario:"api/propiedades/own",
+    urlPerfil: "profile",
+    urlPropiedadesFeedCliente:"api/propiedades/available",
+    urlPropiedadesFeedClienteByUsuario:"api/propiedades/available/",
+    urlPropiedadesFeedAnfitrion:"api/propiedades/active",
+    urlPerfilEdit: "profile/edit-profile",
+    urlUsuarioConfigRol: "profile/edit-profile/role",
+    urlReservacionPost:"reservation/add",
+    urlActualizarReservacionPropiedadPut:"api/propiedades/edit/reservationS",
+    urlAddPropiedadFavoritaByUsuario: "api/propiedades/add/favorite/",
+    urlDeletePropiedadFavoritaByUsuario: "api/propiedades/delete/favorite/",
+    urlPropiedadesFavoritasByUsuario:"api/propiedades/available/favorite/",
+    urlPagosByUsuario:"pagos/",
+    urlFiltros: "api/propiedades/filtros"
+};
