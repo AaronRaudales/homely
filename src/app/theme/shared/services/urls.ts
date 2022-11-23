@@ -1,5 +1,5 @@
 export const urls = {
-    urlLogin: "https://homely-back.herokuapp.com/login",
+    urlLogin: "login",
     urlForgotPassword: "forgot-password",
     urlSignUp: "signup",
     urlPropiedadesPost:"api/propiedades/add",
