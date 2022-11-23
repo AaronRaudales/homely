@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-    serverIP: "https://homely-back.herokuapp.com/"
+    serverIP: "https://homely-back.herokuapp.com"
 };
 
 /*
