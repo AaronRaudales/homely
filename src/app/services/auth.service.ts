@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiURL ='https://homely-back.herokuapp.com/';
+  private apiURL ='http://localhost:4000';
   constructor(private http: HttpClient) { }
 
   getData(user):Observable<any> {
